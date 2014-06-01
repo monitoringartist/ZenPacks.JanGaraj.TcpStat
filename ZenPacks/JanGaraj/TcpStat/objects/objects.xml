@@ -6,7 +6,7 @@
 Products.ZenModel.Device
 </property>
 <tomanycont id='datasources'>
-<object id='ss' module='Products.ZenModel.BasicDataSource' class='BasicDataSource'>
+<object id='tcpstat' module='Products.ZenModel.BasicDataSource' class='BasicDataSource'>
 <property select_variable="sourcetypes" type="selection" id="sourcetype" mode="w" >
 COMMAND
 </property>
@@ -17,10 +17,10 @@ True
 /Status/TcpStat
 </property>
 <property type="int" id="severity" mode="w" >
-3
+4
 </property>
 <property type="string" id="commandTemplate" mode="w" >
-/usr/bin/env ss --tcp --all --numeric
+/bin/cat /proc/net/tcp
 </property>
 <property type="int" id="cycletime" mode="w" >
 300
@@ -29,10 +29,10 @@ True
 True
 </property>
 <property type="string" id="parser" mode="w" >
-ZenPacks.JanGaraj.TcpStat.parsers.linux.ss
+ZenPacks.JanGaraj.TcpStat.parsers.linux.tcp
 </property>
 <tomanycont id='datapoints'>
-<object id='CLOSE-WAIT_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='CLOSE-WAIT' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 The remote end has shut down, waiting for the socket to close.
 </property>
@@ -46,21 +46,7 @@ True
 The remote end has shut down, waiting for the socket to close.
 </property>
 </object>
-<object id='CLOSE-WAIT_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-The remote end has shut down, waiting for the socket to close.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-The remote end has shut down, waiting for the socket to close.
-</property>
-</object>
-<object id='CLOSING_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='CLOSING' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 Both sockets are shut down but we still don't have all our data sent.
 </property>
@@ -74,21 +60,7 @@ True
 Both sockets are shut down but we still don't have all our data sent.
 </property>
 </object>
-<object id='CLOSING_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-Both sockets are shut down but we still don't have all our data sent.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-Both sockets are shut down but we still don't have all our data sent.
-</property>
-</object>
-<object id='ESTAB_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='ESTAB' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 The socket has an established connection.
 </property>
@@ -102,21 +74,7 @@ True
 The socket has an established connection.
 </property>
 </object>
-<object id='ESTAB_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-The socket has an established connection.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-The socket has an established connection.
-</property>
-</object>
-<object id='FIN-WAIT-1_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='FIN-WAIT-1' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 The socket is closed, and the connection is shutting down.
 </property>
@@ -130,21 +88,7 @@ True
 The socket is closed, and the connection is shutting down.
 </property>
 </object>
-<object id='FIN-WAIT-1_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-The socket is closed, and the connection is shutting down.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-The socket is closed, and the connection is shutting down.
-</property>
-</object>
-<object id='FIN-WAIT-2_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='FIN-WAIT-2' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 Connection is closed, and the socket is waiting for a shutdown from the remote end.
 </property>
@@ -158,21 +102,7 @@ True
 Connection is closed, and the socket is waiting for a shutdown from the remote end.
 </property>
 </object>
-<object id='FIN-WAIT-2_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-Connection is closed, and the socket is waiting for a shutdown from the remote end.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-Connection is closed, and the socket is waiting for a shutdown from the remote end.
-</property>
-</object>
-<object id='LAST-ACK_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='LAST-ACK' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 The remote end has shut down, and the socket is closed. Waiting for acknowledgement.
 </property>
@@ -186,21 +116,7 @@ True
 The remote end has shut down, and the socket is closed. Waiting for acknowledgement.
 </property>
 </object>
-<object id='LAST-ACK_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-The remote end has shut down, and the socket is closed. Waiting for acknowledgement.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-The remote end has shut down, and the socket is closed. Waiting for acknowledgement.
-</property>
-</object>
-<object id='LISTEN_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='LISTEN' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 The socket is listening for incoming connections.
 </property>
@@ -214,21 +130,7 @@ True
 The socket is listening for incoming connections.
 </property>
 </object>
-<object id='LISTEN_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-The socket is listening for incoming connections.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-The socket is listening for incoming connections.
-</property>
-</object>
-<object id='SYN-RECV_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='SYN-RECV' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 A connection request has been received from the network.
 </property>
@@ -242,21 +144,7 @@ True
 A connection request has been received from the network.
 </property>
 </object>
-<object id='SYN-RECV_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-A connection request has been received from the network.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-A connection request has been received from the network.
-</property>
-</object>
-<object id='SYN-SENT_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='SYN-SENT' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 The socket is actively attempting to establish a connection.
 </property>
@@ -270,21 +158,7 @@ True
 The socket is actively attempting to establish a connection.
 </property>
 </object>
-<object id='SYN-SENT_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-The socket is actively attempting to establish a connection.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-The socket is actively attempting to establish a connection.
-</property>
-</object>
-<object id='TIME-WAIT_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='TIME-WAIT' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 The socket is waiting after close to handle packets still in the network.
 </property>
@@ -298,21 +172,7 @@ True
 The socket is waiting after close to handle packets still in the network.
 </property>
 </object>
-<object id='TIME-WAIT_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-The socket is waiting after close to handle packets still in the network.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-The socket is waiting after close to handle packets still in the network.
-</property>
-</object>
-<object id='UNCONN_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='UNCONN' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 The socket is not being used.
 </property>
@@ -326,35 +186,7 @@ True
 The socket is not being used.
 </property>
 </object>
-<object id='UNCONN_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-The socket is not being used.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-The socket is not being used.
-</property>
-</object>
-<object id='UNKNOWN_ipv4' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
-<property id='zendoc' type='string'>
-The state of the socket is unknown.
-</property>
-<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
-GAUGE
-</property>
-<property type="boolean" id="isrow" mode="w" >
-True
-</property>
-<property type="string" id="description" mode="w" >
-The state of the socket is unknown.
-</property>
-</object>
-<object id='UNKNOWN_ipv6' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<object id='UNKNOWN' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
 <property id='zendoc' type='string'>
 The state of the socket is unknown.
 </property>
@@ -412,7 +244,7 @@ LINE
 False
 </property>
 <property type="string" id="format" mode="w" >
-%5.0lf%s
+%5.2lf%s
 </property>
 <property type="string" id="legend" mode="w" >
 ${graphPoint/id}
@@ -421,100 +253,13 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_CLOSE-WAIT_ipv4
+tcp_CLOSE-WAIT
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
 <object id='CLOSING' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-1
-</property>
-<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
-LINE
-</property>
-<property type="long" id="lineWidth" mode="w" >
-1
-</property>
-<property type="boolean" id="stacked" mode="w" >
-False
-</property>
-<property type="string" id="format" mode="w" >
-%5.0lf%s
-</property>
-<property type="string" id="legend" mode="w" >
-${graphPoint/id}
-</property>
-<property type="long" id="limit" mode="w" >
--1
-</property>
-<property type="string" id="dpName" mode="w" >
-ss_CLOSING_ipv4
-</property>
-<property type="string" id="cFunc" mode="w" >
-AVERAGE
-</property>
-</object>
-<object id='ESTAB' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-2
-</property>
-<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
-LINE
-</property>
-<property type="long" id="lineWidth" mode="w" >
-1
-</property>
-<property type="boolean" id="stacked" mode="w" >
-False
-</property>
-<property type="string" id="format" mode="w" >
-%5.0lf%s
-</property>
-<property type="string" id="legend" mode="w" >
-${graphPoint/id}
-</property>
-<property type="long" id="limit" mode="w" >
--1
-</property>
-<property type="string" id="dpName" mode="w" >
-ss_ESTAB_ipv4
-</property>
-<property type="string" id="cFunc" mode="w" >
-AVERAGE
-</property>
-</object>
-<object id='FIN-WAIT-1' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-3
-</property>
-<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
-LINE
-</property>
-<property type="long" id="lineWidth" mode="w" >
-1
-</property>
-<property type="boolean" id="stacked" mode="w" >
-False
-</property>
-<property type="string" id="format" mode="w" >
-%5.0lf%s
-</property>
-<property type="string" id="legend" mode="w" >
-${graphPoint/id}
-</property>
-<property type="long" id="limit" mode="w" >
--1
-</property>
-<property type="string" id="dpName" mode="w" >
-ss_FIN-WAIT-1_ipv4
-</property>
-<property type="string" id="cFunc" mode="w" >
-AVERAGE
-</property>
-</object>
-<object id='FIN-WAIT-2' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 4
 </property>
@@ -528,7 +273,7 @@ LINE
 False
 </property>
 <property type="string" id="format" mode="w" >
-%5.0lf%s
+%5.2lf%s
 </property>
 <property type="string" id="legend" mode="w" >
 ${graphPoint/id}
@@ -537,13 +282,42 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_FIN-WAIT-2_ipv4
+tcp_CLOSING
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
-<object id='LAST-ACK' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<object id='ESTAB' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<property type="long" id="sequence" mode="w" >
+1
+</property>
+<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
+LINE
+</property>
+<property type="long" id="lineWidth" mode="w" >
+1
+</property>
+<property type="boolean" id="stacked" mode="w" >
+False
+</property>
+<property type="string" id="format" mode="w" >
+%5.2lf%s
+</property>
+<property type="string" id="legend" mode="w" >
+${graphPoint/id}
+</property>
+<property type="long" id="limit" mode="w" >
+-1
+</property>
+<property type="string" id="dpName" mode="w" >
+tcp_ESTAB
+</property>
+<property type="string" id="cFunc" mode="w" >
+AVERAGE
+</property>
+</object>
+<object id='FIN-WAIT-1' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 5
 </property>
@@ -557,7 +331,7 @@ LINE
 False
 </property>
 <property type="string" id="format" mode="w" >
-%5.0lf%s
+%5.2lf%s
 </property>
 <property type="string" id="legend" mode="w" >
 ${graphPoint/id}
@@ -566,13 +340,13 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_LAST-ACK_ipv4
+tcp_FIN-WAIT-1
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
-<object id='LISTEN' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<object id='FIN-WAIT-2' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 6
 </property>
@@ -586,7 +360,7 @@ LINE
 False
 </property>
 <property type="string" id="format" mode="w" >
-%5.0lf%s
+%5.2lf%s
 </property>
 <property type="string" id="legend" mode="w" >
 ${graphPoint/id}
@@ -595,13 +369,13 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_LISTEN_ipv4
+tcp_FIN-WAIT-2
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
-<object id='SYN-RECV' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<object id='LAST-ACK' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 7
 </property>
@@ -615,7 +389,7 @@ LINE
 False
 </property>
 <property type="string" id="format" mode="w" >
-%5.0lf%s
+%5.2lf%s
 </property>
 <property type="string" id="legend" mode="w" >
 ${graphPoint/id}
@@ -624,42 +398,13 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_SYN-RECV_ipv4
+tcp_LAST-ACK
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
-<object id='SYN-SENT' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-8
-</property>
-<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
-LINE
-</property>
-<property type="long" id="lineWidth" mode="w" >
-1
-</property>
-<property type="boolean" id="stacked" mode="w" >
-False
-</property>
-<property type="string" id="format" mode="w" >
-%5.0lf%s
-</property>
-<property type="string" id="legend" mode="w" >
-${graphPoint/id}
-</property>
-<property type="long" id="limit" mode="w" >
--1
-</property>
-<property type="string" id="dpName" mode="w" >
-ss_SYN-SENT_ipv4
-</property>
-<property type="string" id="cFunc" mode="w" >
-AVERAGE
-</property>
-</object>
-<object id='TIME-WAIT' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<object id='LISTEN' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 9
 </property>
@@ -673,7 +418,7 @@ LINE
 False
 </property>
 <property type="string" id="format" mode="w" >
-%5.0lf%s
+%5.2lf%s
 </property>
 <property type="string" id="legend" mode="w" >
 ${graphPoint/id}
@@ -682,13 +427,71 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_TIME-WAIT_ipv4
+tcp_LISTEN
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
-<object id='UNCONN' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<object id='SYN-RECV' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<property type="long" id="sequence" mode="w" >
+8
+</property>
+<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
+LINE
+</property>
+<property type="long" id="lineWidth" mode="w" >
+1
+</property>
+<property type="boolean" id="stacked" mode="w" >
+False
+</property>
+<property type="string" id="format" mode="w" >
+%5.2lf%s
+</property>
+<property type="string" id="legend" mode="w" >
+${graphPoint/id}
+</property>
+<property type="long" id="limit" mode="w" >
+-1
+</property>
+<property type="string" id="dpName" mode="w" >
+tcp_SYN-RECV
+</property>
+<property type="string" id="cFunc" mode="w" >
+AVERAGE
+</property>
+</object>
+<object id='SYN-SENT' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<property type="long" id="sequence" mode="w" >
+2
+</property>
+<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
+LINE
+</property>
+<property type="long" id="lineWidth" mode="w" >
+1
+</property>
+<property type="boolean" id="stacked" mode="w" >
+False
+</property>
+<property type="string" id="format" mode="w" >
+%5.2lf%s
+</property>
+<property type="string" id="legend" mode="w" >
+${graphPoint/id}
+</property>
+<property type="long" id="limit" mode="w" >
+-1
+</property>
+<property type="string" id="dpName" mode="w" >
+tcp_SYN-SENT
+</property>
+<property type="string" id="cFunc" mode="w" >
+AVERAGE
+</property>
+</object>
+<object id='TIME-WAIT' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 10
 </property>
@@ -702,7 +505,7 @@ LINE
 False
 </property>
 <property type="string" id="format" mode="w" >
-%5.0lf%s
+%5.2lf%s
 </property>
 <property type="string" id="legend" mode="w" >
 ${graphPoint/id}
@@ -711,13 +514,13 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_UNCONN_ipv4
+tcp_TIME-WAIT
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
-<object id='UNKNOWN' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<object id='UNCONN' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 11
 </property>
@@ -731,7 +534,7 @@ LINE
 False
 </property>
 <property type="string" id="format" mode="w" >
-%5.0lf%s
+%5.2lf%s
 </property>
 <property type="string" id="legend" mode="w" >
 ${graphPoint/id}
@@ -740,7 +543,36 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_UNKNOWN_ipv4
+tcp_UNCONN
+</property>
+<property type="string" id="cFunc" mode="w" >
+AVERAGE
+</property>
+</object>
+<object id='UNKNOWN' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<property type="long" id="sequence" mode="w" >
+3
+</property>
+<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
+LINE
+</property>
+<property type="long" id="lineWidth" mode="w" >
+1
+</property>
+<property type="boolean" id="stacked" mode="w" >
+False
+</property>
+<property type="string" id="format" mode="w" >
+%5.2lf%s
+</property>
+<property type="string" id="legend" mode="w" >
+${graphPoint/id}
+</property>
+<property type="long" id="limit" mode="w" >
+-1
+</property>
+<property type="string" id="dpName" mode="w" >
+tcp_UNKNOWN
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
@@ -748,6 +580,212 @@ AVERAGE
 </object>
 </tomanycont>
 </object>
+</tomanycont>
+</object>
+<!-- ('', 'zport', 'dmd', 'Devices', 'Server', 'rrdTemplates', 'TcpStat6') -->
+<object id='/zport/dmd/Devices/Server/rrdTemplates/TcpStat6' module='Products.ZenModel.RRDTemplate' class='RRDTemplate'>
+<property type="string" id="targetPythonClass" mode="w" >
+Products.ZenModel.Device
+</property>
+<tomanycont id='datasources'>
+<object id='tcpstat6' module='Products.ZenModel.BasicDataSource' class='BasicDataSource'>
+<property select_variable="sourcetypes" type="selection" id="sourcetype" mode="w" >
+COMMAND
+</property>
+<property type="boolean" id="enabled" mode="w" >
+True
+</property>
+<property type="string" id="eventClass" mode="w" >
+/Status/TcpStat
+</property>
+<property type="int" id="severity" mode="w" >
+4
+</property>
+<property type="string" id="commandTemplate" mode="w" >
+/bin/cat /proc/net/tcp6
+</property>
+<property type="int" id="cycletime" mode="w" >
+300
+</property>
+<property type="boolean" id="usessh" mode="w" >
+True
+</property>
+<property type="string" id="parser" mode="w" >
+ZenPacks.JanGaraj.TcpStat.parsers.linux.tcp
+</property>
+<tomanycont id='datapoints'>
+<object id='CLOSE-WAIT' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+The remote end has shut down, waiting for the socket to close.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+The remote end has shut down, waiting for the socket to close.
+</property>
+</object>
+<object id='CLOSING' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+Both sockets are shut down but we still don't have all our data sent.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+Both sockets are shut down but we still don't have all our data sent.
+</property>
+</object>
+<object id='ESTAB' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+The socket has an established connection.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+The socket has an established connection.
+</property>
+</object>
+<object id='FIN-WAIT-1' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+The socket is closed, and the connection is shutting down.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+The socket is closed, and the connection is shutting down.
+</property>
+</object>
+<object id='FIN-WAIT-2' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+Connection is closed, and the socket is waiting for a shutdown from the remote end.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+Connection is closed, and the socket is waiting for a shutdown from the remote end.
+</property>
+</object>
+<object id='LAST-ACK' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+The remote end has shut down, and the socket is closed. Waiting for acknowledgement.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+The remote end has shut down, and the socket is closed. Waiting for acknowledgement.
+</property>
+</object>
+<object id='LISTEN' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+The socket is listening for incoming connections.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+The socket is listening for incoming connections.
+</property>
+</object>
+<object id='SYN-RECV' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+A connection request has been received from the network.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+A connection request has been received from the network.
+</property>
+</object>
+<object id='SYN-SENT' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+The socket is actively attempting to establish a connection.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+The socket is actively attempting to establish a connection.
+</property>
+</object>
+<object id='TIME-WAIT' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+The socket is waiting after close to handle packets still in the network.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+The socket is waiting after close to handle packets still in the network.
+</property>
+</object>
+<object id='UNCONN' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+The socket is not being used.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+The socket is not being used.
+</property>
+</object>
+<object id='UNKNOWN' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property id='zendoc' type='string'>
+The state of the socket is unknown.
+</property>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
+True
+</property>
+<property type="string" id="description" mode="w" >
+The state of the socket is unknown.
+</property>
+</object>
+</tomanycont>
+</object>
+</tomanycont>
+<tomanycont id='graphDefs'>
 <object id='TCP States IPv6' module='Products.ZenModel.GraphDefinition' class='GraphDefinition'>
 <property type="int" id="height" mode="w" >
 100
@@ -771,7 +809,7 @@ False
 True
 </property>
 <property type="long" id="sequence" mode="w" >
-1
+0
 </property>
 <tomanycont id='graphPoints'>
 <object id='CLOSE-WAIT' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
@@ -797,100 +835,13 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_CLOSE-WAIT_ipv6
+tcp6_CLOSE-WAIT
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
 <object id='CLOSING' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-1
-</property>
-<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
-LINE
-</property>
-<property type="long" id="lineWidth" mode="w" >
-1
-</property>
-<property type="boolean" id="stacked" mode="w" >
-False
-</property>
-<property type="string" id="format" mode="w" >
-%5.0lf%s
-</property>
-<property type="string" id="legend" mode="w" >
-${graphPoint/id}
-</property>
-<property type="long" id="limit" mode="w" >
--1
-</property>
-<property type="string" id="dpName" mode="w" >
-ss_CLOSING_ipv6
-</property>
-<property type="string" id="cFunc" mode="w" >
-AVERAGE
-</property>
-</object>
-<object id='ESTAB' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-2
-</property>
-<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
-LINE
-</property>
-<property type="long" id="lineWidth" mode="w" >
-1
-</property>
-<property type="boolean" id="stacked" mode="w" >
-False
-</property>
-<property type="string" id="format" mode="w" >
-%5.0lf%s
-</property>
-<property type="string" id="legend" mode="w" >
-${graphPoint/id}
-</property>
-<property type="long" id="limit" mode="w" >
--1
-</property>
-<property type="string" id="dpName" mode="w" >
-ss_ESTAB_ipv6
-</property>
-<property type="string" id="cFunc" mode="w" >
-AVERAGE
-</property>
-</object>
-<object id='FIN-WAIT-1' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-3
-</property>
-<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
-LINE
-</property>
-<property type="long" id="lineWidth" mode="w" >
-1
-</property>
-<property type="boolean" id="stacked" mode="w" >
-False
-</property>
-<property type="string" id="format" mode="w" >
-%5.0lf%s
-</property>
-<property type="string" id="legend" mode="w" >
-${graphPoint/id}
-</property>
-<property type="long" id="limit" mode="w" >
--1
-</property>
-<property type="string" id="dpName" mode="w" >
-ss_FIN-WAIT-1_ipv6
-</property>
-<property type="string" id="cFunc" mode="w" >
-AVERAGE
-</property>
-</object>
-<object id='FIN-WAIT-2' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 4
 </property>
@@ -913,13 +864,42 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_FIN-WAIT-2_ipv6
+tcp6_CLOSING
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
-<object id='LAST-ACK' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<object id='ESTAB' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<property type="long" id="sequence" mode="w" >
+1
+</property>
+<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
+LINE
+</property>
+<property type="long" id="lineWidth" mode="w" >
+1
+</property>
+<property type="boolean" id="stacked" mode="w" >
+False
+</property>
+<property type="string" id="format" mode="w" >
+%5.0lf%s
+</property>
+<property type="string" id="legend" mode="w" >
+${graphPoint/id}
+</property>
+<property type="long" id="limit" mode="w" >
+-1
+</property>
+<property type="string" id="dpName" mode="w" >
+tcp6_ESTAB
+</property>
+<property type="string" id="cFunc" mode="w" >
+AVERAGE
+</property>
+</object>
+<object id='FIN-WAIT-1' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 5
 </property>
@@ -942,13 +922,13 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_LAST-ACK_ipv6
+tcp6_FIN-WAIT-1
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
-<object id='LISTEN' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<object id='FIN-WAIT-2' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 6
 </property>
@@ -971,13 +951,13 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_LISTEN_ipv6
+tcp6_FIN-WAIT-2
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
-<object id='SYN-RECV' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<object id='LAST-ACK' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 7
 </property>
@@ -1000,13 +980,42 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_SYN-RECV_ipv6
+tcp6_LAST-ACK
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
 </property>
 </object>
-<object id='SYN-SENT' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<object id='LISTEN' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<property type="long" id="sequence" mode="w" >
+11
+</property>
+<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
+LINE
+</property>
+<property type="long" id="lineWidth" mode="w" >
+1
+</property>
+<property type="boolean" id="stacked" mode="w" >
+False
+</property>
+<property type="string" id="format" mode="w" >
+%5.0lf%s
+</property>
+<property type="string" id="legend" mode="w" >
+${graphPoint/id}
+</property>
+<property type="long" id="limit" mode="w" >
+-1
+</property>
+<property type="string" id="dpName" mode="w" >
+tcp6_LISTEN
+</property>
+<property type="string" id="cFunc" mode="w" >
+AVERAGE
+</property>
+</object>
+<object id='SYN-RECV' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 8
 </property>
@@ -1029,7 +1038,36 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_SYN-SENT_ipv6
+tcp6_SYN-RECV
+</property>
+<property type="string" id="cFunc" mode="w" >
+AVERAGE
+</property>
+</object>
+<object id='SYN-SENT' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<property type="long" id="sequence" mode="w" >
+2
+</property>
+<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
+LINE
+</property>
+<property type="long" id="lineWidth" mode="w" >
+1
+</property>
+<property type="boolean" id="stacked" mode="w" >
+False
+</property>
+<property type="string" id="format" mode="w" >
+%5.0lf%s
+</property>
+<property type="string" id="legend" mode="w" >
+${graphPoint/id}
+</property>
+<property type="long" id="limit" mode="w" >
+-1
+</property>
+<property type="string" id="dpName" mode="w" >
+tcp6_SYN-SENT
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
@@ -1058,7 +1096,7 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_TIME-WAIT_ipv6
+tcp6_TIME-WAIT
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
@@ -1087,7 +1125,7 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_UNCONN_ipv6
+tcp6_UNCONN
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
@@ -1095,7 +1133,7 @@ AVERAGE
 </object>
 <object id='UNKNOWN' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
 <property type="long" id="sequence" mode="w" >
-11
+3
 </property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
@@ -1116,7 +1154,7 @@ ${graphPoint/id}
 -1
 </property>
 <property type="string" id="dpName" mode="w" >
-ss_UNKNOWN_ipv6
+tcp6_UNKNOWN
 </property>
 <property type="string" id="cFunc" mode="w" >
 AVERAGE
@@ -1128,5 +1166,11 @@ AVERAGE
 </object>
 <!-- ('', 'zport', 'dmd', 'Events', 'Status', 'TcpStat') -->
 <object id='/zport/dmd/Events/Status/TcpStat' module='Products.ZenEvents.EventClass' class='EventClass'>
+<property id='zendoc' type='string'>
+Some problem with executing of command ss over SSH on device (ZenPack.JanGaraj.TcpStat).
+</property>
+<property type="string" id="description" mode="w" >
+Some problem with executing of command ss over SSH on device (ZenPack.JanGaraj.TcpStat).
+</property>
 </object>
 </objects>

@@ -35,7 +35,7 @@ Download the `TCP Stat <http://community.zenoss.org/docs/DOC-XXXX>`_.
 Copy this file to your Zenoss server and run the following commands as the zenoss
 user.
 
-        zenpack --install ZenPacks.JanGaraj.TcpStat-0.0.1.egg
+        zenpack --install ZenPacks.JanGaraj.TcpStat-0.0.2.egg
         zenoss restart
 
 Developer Installation (link mode)
@@ -57,16 +57,17 @@ Please configure device SSH settings properly (zCommandUsername, zCommandPasswor
 Usage
 =====
 
-Go to the specific device (yes, it needs to already be added).
+Go to the specific device (yes, it needs to already be added) and bind TcpStat/TcpStat6 templates. 
 
 
-Installing the ZenPack will add the following items to your Zenoss system.
+Installing the ZenPack will add the following items to your Zenoss system:
 
 
 Monitoring Templates
 --------------------
 
 - /Devices/Server/rrdTemplates/TcpStat
+- /Devices/Server/rrdTemplates/TcpStat6
 
 
 Event Classes

@@ -6,6 +6,8 @@ About
 =====
 
 This SSH-based ZenPack provides TCP state statistic for IPv4 and IPv6.
+![TCP States IPv4](https://raw.github.com/jangaraj/ZenPacks.JanGaraj.TcpStat/master/TCP_States_IPv4.png)
+![TCP States IPv6](https://raw.github.com/jangaraj/ZenPacks.JanGaraj.TcpStat/master/TCP_States_IPv6.png)
 
 Requirements
 ============
@@ -22,7 +24,7 @@ Monitored Systems
 -----------------
 
 On monitored system, /bin/cat command must be installed and SSH daemon 
-properly configured. ZenPack fetchs statistic from /proc/net/tcp and /proc/net/tcp6.
+properly configured. ZenPack fetchs statistic from /proc/net/tcp and /proc/net/tcp6, so /proc filesystem must be mounted.
 Notes:
 - netstat command is slow (especially if you have box with 40k connections)
 - ss command is quick, but its location depends on Linux distribution
@@ -39,7 +41,7 @@ Download the `TCP Stat <http://community.zenoss.org/docs/DOC-XXXX>`_.
 Copy this file to your Zenoss server and run the following commands as the zenoss
 user.
 
-        zenpack --install ZenPacks.JanGaraj.TcpStat-0.0.2.egg
+        zenpack --install ZenPacks.JanGaraj.TcpStat-1.0.0.egg
         zenoss restart
 
 Developer Installation (link mode)

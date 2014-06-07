@@ -3,7 +3,7 @@
 # or saved.  Do not modify them directly here.
 # NB: PACKAGES is deprecated
 NAME = "ZenPacks.JanGaraj.TcpStat"
-VERSION = "0.0.2"
+VERSION = "1.0.0"
 AUTHOR = "Jan Garaj"
 LICENSE = "GPLv3"
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.JanGaraj']

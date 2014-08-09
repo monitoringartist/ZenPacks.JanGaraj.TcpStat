@@ -37,7 +37,7 @@ Installation
 Normal Installation (packaged egg)
 ----------------------------------
 
-Download the `TCP Stat <http://community.zenoss.org/docs/DOC-XXXX>`_.
+Download the egg file http://wiki.zenoss.org/download/zenpacks/ZenPacks.JanGaraj.TcpStat/1.0.0/ZenPacks.JanGaraj.TcpStat-1.0.0.egg .
 Copy this file to your Zenoss server and run the following commands as the zenoss
 user.
 
@@ -48,7 +48,7 @@ Developer Installation (link mode)
 ----------------------------------
 
 If you wish to further develop and possibly contribute back to the TcpStat
-ZenPack you should clone the git `repository <https://github.com/jangaraj/ZenPacks.JanGaraj.TcpStat>`,
+ZenPack you should clone the git repository https://github.com/jangaraj/ZenPacks.JanGaraj.TcpStat,
 then install the ZenPack in developer mode using the following commands.
 
         git clone git://github.com/jangaraj/ZenPacks.JanGaraj.TcpStat.git
